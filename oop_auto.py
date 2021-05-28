@@ -117,6 +117,7 @@ def greet(message):
             while True:
                 user1 = pickle.load(file2)
                 user1.read_details()
+                bot.send_message(user.chat_id, "user added")
         except EOFError:
             file2.close()
             
@@ -155,10 +156,12 @@ def greet(message):
                     print(len(user.list_feasible))
                     name = user.download()
                     bot.reply_to(message, "the requested book has been downloaded")
+                    bot.send_message(user.chat_id, "now converting the book")
                     new_name = user.list_feasible[user.book_id]['Title']
                     os.rename(name,new_name+name[-5:])
                     convert(new_name+name[-5:], as_ext='mobi')
                     user.no_books = user.no_books+1
+                    bot.send_message(user.chat_id, "sending to your kindle")
                     user.send_email()
                     bot.send_message(user.chat_id, "the book has been sent")
                     
