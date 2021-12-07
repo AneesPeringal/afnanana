@@ -1,4 +1,5 @@
-%% assignment 3
+%% Transformation between different coordinates
+%used for space dynamics and control course 2020
 while true
     %printing all the options of transformations that are available to the
     %user
